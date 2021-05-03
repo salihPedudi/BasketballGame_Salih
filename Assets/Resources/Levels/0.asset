@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 847c99a2fcbc01341bbcb91e716c1b04, type: 3}
+  m_Name: 0
+  m_EditorClassIdentifier: 
+  Ballcolor: {r: 1, g: 0.06987066, b: 0, a: 1}
+  Ballsize: 75
+  Ballmass: 1
+  BallSpeed: 0.5
+  BallStartPosition: {x: 0, y: 2.5, z: -0.75}
+  BallCount: 10
+  playerPosition: {x: 0, y: 3, z: -3}
+  playerRotation: {x: -10, y: 0, z: 0}
+  skyboxMaterial: {fileID: 2100000, guid: 9aa8ed67591432941bb76f12eb23ff91, type: 2}
+  SuccessCount: 1
