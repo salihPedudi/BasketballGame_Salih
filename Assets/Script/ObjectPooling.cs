@@ -15,6 +15,7 @@ public class ObjectPooling : MonoBehaviour
     }
 
     [SerializeField] private Pool[] pools = null;
+    public Pool[] pool =>pools;
 
     public static ObjectPooling Instance;
     public bool isPooled = false;
@@ -49,10 +50,10 @@ public class ObjectPooling : MonoBehaviour
 
     public GameObject GetPooledObject(int _objType)
     {
-
+        Debug.Log("hemmen getiriyorum");
         if (_objType >= pools.Length)
             return null;
-
+        Debug.Log("hemmen getiriyorummmm");
         GameObject _obj = pools[_objType].pooledObjects.Dequeue();
 
         _obj.SetActive(true);

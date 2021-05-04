@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F629FE9F-03C9-B6F0-418A-C7AB3A475E31}</ProjectGuid>
+    <ProjectGuid>{D9D7F5AF-0970-3B75-9A70-70FEF5913C3C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -57,18 +57,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\Scriptable\LevelDesignScriptableObject.cs" />
+    <Compile Include="Assets\Script\Controller\UIController.cs" />
+    <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\BasketballGameDefinition.cs" />
+    <Compile Include="Assets\Script\Controller\AudioController.cs" />
     <Compile Include="Assets\Script\ShootBall.cs" />
     <Compile Include="Assets\Script\ObjectPooling.cs" />
-    <Compile Include="Assets\Script\Controller\AudioController.cs" />
     <Compile Include="Assets\Script\Controller\MaterialController.cs" />
     <Compile Include="Assets\Script\Controller\CrowdController.cs" />
-    <Compile Include="Assets\Script\GameManager.cs" />
-    <Compile Include="Assets\Script\Controller\UIController.cs" />
   </ItemGroup>
   <ItemGroup>
-     <None Include="Assets\3D\Ball\source\MPB.shader" />
-     <None Include="Assets\Stylized Sky\Shaders\Stylized Sky.shader" />
+     <None Include="Assets\ART\3D\Ball\source\MPB.shader" />
+     <None Include="Assets\ART\Simple Toon\Shaders\STOutline.shader" />
+     <None Include="Assets\ART\Simple Toon\Shaders\STTransparent.shader" />
+     <None Include="Assets\ART\Simple Toon\Shaders\STCore.cginc" />
+     <None Include="Assets\ART\Stylized Sky\Shaders\Stylized Sky.shader" />
+     <None Include="Assets\ART\Simple Toon\Shaders\STDefault.shader" />
+     <None Include="Assets\ART\Simple Toon\Shaders\STFunctions.cginc" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.5f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

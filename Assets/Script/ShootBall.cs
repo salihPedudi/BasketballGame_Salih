@@ -18,6 +18,9 @@ public class ShootBall : MaterialController
 
     private bool isShoot;
     private bool isBasket = false;
+
+    private float minDist = 100f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();       
@@ -30,9 +33,25 @@ public class ShootBall : MaterialController
         mousePressDownPos = Input.mousePosition;       
     }
 
+    private void OnMouseDrag()
+    {
+        if (Vector3.Distance(Input.mousePosition, mousePressDownPos) > minDist)
+        {
+            SetMaterialOutLine(0f);
+        }
+        else
+        {
+            SetMaterialOutLine(0.01f);
+        }
+    }
+
     private void OnMouseUp()
     {       
-        mouseReleasePos = Input.mousePosition;
+        mouseReleasePos = Input.mousePosition;                
+        if (Vector3.Distance(mouseReleasePos, mousePressDownPos) < minDist)
+            return;
+
+
         Shoot(mouseReleasePos - mousePressDownPos);
         Invoke("HideObject", 4f);
     }
@@ -116,6 +135,7 @@ public class ShootBall : MaterialController
         rb.velocity = Vector3.zero;
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
+        SetMaterialOutLine(0.01f);
         isShoot = false;       
     }
 

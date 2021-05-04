@@ -8,7 +8,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Transform player;
+    [SerializeField] private Cloth clothObject;
     private AudioSource auSource;
+
 
     // level datalarý
     private LevelDesignScriptableObject levelObject;
@@ -73,6 +75,7 @@ public class GameManager : MonoBehaviour
     }
     
     // topu level e göre özelleþtir
+    /*
     private Transform CustomizedBallTransform()
     {
         Transform _ball = ObjectPooling.Instance.GetPooledObject(0).transform;      
@@ -86,6 +89,8 @@ public class GameManager : MonoBehaviour
 
         return _ball;
     }
+    */
+
 
     // kayýtlý kullanýcý bilgilerini al
     private void CheckPlayerData()
@@ -120,7 +125,9 @@ public class GameManager : MonoBehaviour
     { 
         yield return new WaitUntil(()=> ObjectPooling.Instance.isPooled);
         UIController.Instance.ResetBalls(ballCount);
-        CustomizedBallTransform();
+        //CustomizedBallTransform();
+        CustomizeAllBall();
+        ObjectPooling.Instance.GetPooledObject(0);
     }
 
     // top atýldý
@@ -176,7 +183,9 @@ public class GameManager : MonoBehaviour
     IEnumerator GetNewBall()
     {
         yield return new WaitForSeconds(1f);
-        CustomizedBallTransform();
+        //CustomizedBallTransform();
+        Transform _ball= ObjectPooling.Instance.GetPooledObject(0).transform;
+        ResetBall(_ball);
     }
 
     // bak bakalým hedefe ulaþmýþ mýyýz
@@ -211,13 +220,18 @@ public class GameManager : MonoBehaviour
         StartCoroutine(CreateGame());
     }
 
+    // tüm oyunu sýfýrla
     public void ResetAll()
     {
         PlayerPrefs.DeleteAll();
 
-        for(int i = 0; i < this.transform.childCount; i++)
+        score = 0;
+        numberOfBallsThrown = 0;
+        UIController.Instance.SetScore(score);
+        Transform _poolParent = ObjectPooling.Instance.pool[0].parent;
+        for (int i = 0; i < _poolParent.childCount; i++)
         {
-            this.transform.GetChild(i).gameObject.SetActive(false);
+            _poolParent.GetChild(i).gameObject.SetActive(false);
         }
 
         CheckPlayerData();
@@ -226,5 +240,37 @@ public class GameManager : MonoBehaviour
         UIController.Instance.OpenSelectedPanel(Panels.StartPanel);
         UIController.Instance.SetStartPanel(level, successCriterion);
 
+    }
+
+
+    // tüm toplarý özelleþtir
+    private void CustomizeAllBall()
+    {     
+        List<ClothSphereColliderPair> _clothColliders = new List<ClothSphereColliderPair>();
+
+        for (int i = 0; i < ObjectPooling.Instance.pool[0].parent.childCount; i++)
+        {
+            Transform _ball = ObjectPooling.Instance.pool[0].parent.GetChild(i);
+            ResetBall(_ball);
+            _ball.GetComponent<ShootBall>().speed = levelObject.BallSpeed;            
+            _ball.GetComponent<ShootBall>().SetMaterialColor(levelObject.Ballcolor);
+
+            _clothColliders.Add((new ClothSphereColliderPair(_ball.GetComponent<SphereCollider>())));
+
+           _ball.gameObject.SetActive(false);
+        }
+
+        clothObject.sphereColliders = _clothColliders.ToArray();
+        _clothColliders.Clear();
+    }
+
+    // topu resetle
+    private void ResetBall(Transform _ball)
+    {
+        _ball.eulerAngles = Vector3.zero;
+        _ball.localScale = Vector3.one * levelObject.Ballsize;
+        _ball.position = levelObject.BallStartPosition;
+        _ball.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        _ball.GetComponent<Rigidbody>().mass = levelObject.Ballmass;
     }
 }

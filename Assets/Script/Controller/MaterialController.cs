@@ -25,4 +25,15 @@ public class MaterialController : MonoBehaviour
         materialRenderer.SetPropertyBlock(materialPropertyBlock,0);       
 
     }
+
+    public void SetMaterialOutLine(float _with)
+    {
+        //_OtlWidth
+        if (materialPropertyBlock == null)
+        {
+            materialPropertyBlock = new MaterialPropertyBlock();
+        }
+        materialPropertyBlock.SetFloat("_OtlWidth", _with);
+        materialRenderer.SetPropertyBlock(materialPropertyBlock, 0);
+    }
 }
