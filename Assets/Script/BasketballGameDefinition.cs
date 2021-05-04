@@ -50,7 +50,8 @@ namespace BasketballGameDefinition
     {        
         SuccessfullBall,
         ShootBall,
-        HitBall,
+        HitGroundBall,
+        HitHoopBall,
         CrowdIdle,
         CrowdHappy,
         CrowdUnhappy,

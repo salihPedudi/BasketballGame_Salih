@@ -8924,7 +8924,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   successfullBallClip: {fileID: 8300000, guid: cbfaaa7f37d49814a9b3e0b5ebc57f29, type: 3}
   shootBallBallClip: {fileID: 8300000, guid: 8b5c0de47e57ca94fafcfea09bd0bef2, type: 3}
-  hitBallClip: {fileID: 8300000, guid: 8b5c0de47e57ca94fafcfea09bd0bef2, type: 3}
+  hitGroundBallClip: {fileID: 8300000, guid: 95bd6e15194a17248b5cc47beb9ef9b7, type: 3}
+  hitHoopBallClip: {fileID: 8300000, guid: 7e1f842bd578bfe448e98fe5b7bb59ad, type: 3}
   successLevel: {fileID: 8300000, guid: 9aaa40226c3292c4d8fd2b60add18792, type: 3}
   failedLevel: {fileID: 8300000, guid: d598c6f6787a10f42a0a4be4a5b8231f, type: 3}
   crowdHappyClip: {fileID: 8300000, guid: 5f2e36a98b3332e48b62220faf86afe4, type: 3}

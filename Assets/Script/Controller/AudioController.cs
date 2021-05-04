@@ -9,7 +9,8 @@ public class AudioController : MonoBehaviour
 
     [SerializeField] private AudioClip successfullBallClip;
     [SerializeField] private AudioClip shootBallBallClip;
-    [SerializeField] private AudioClip hitBallClip;
+    [SerializeField] private AudioClip hitGroundBallClip;
+    [SerializeField] private AudioClip hitHoopBallClip;
 
     [SerializeField] private AudioClip successLevel;
     [SerializeField] private AudioClip failedLevel;
@@ -51,8 +52,11 @@ public class AudioController : MonoBehaviour
             case SoundEffect.ShootBall:
                 PlayOneShotSoundClip(shootBallBallClip);
                 break;
-            case SoundEffect.HitBall:
-                PlayOneShotSoundClip(hitBallClip);
+            case SoundEffect.HitGroundBall:
+                PlayOneShotSoundClip(hitGroundBallClip);
+                break;
+            case SoundEffect.HitHoopBall:
+                PlayOneShotSoundClip(hitHoopBallClip);
                 break;
             case SoundEffect.SuccessLevel:
                 PlayOneShotSoundClip(successLevel);

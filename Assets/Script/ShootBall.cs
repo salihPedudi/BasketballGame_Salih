@@ -101,10 +101,12 @@ public class ShootBall : MaterialController
         if (collision.gameObject.tag == Tags.BasketballHoop.ToString())
         {
             //ses
+            AudioController.Instance.PlaySound(SoundEffect.HitHoopBall, auSource);
         }
         else if (collision.gameObject.tag == Tags.Plane.ToString())
         {
             //ses   
+            AudioController.Instance.PlaySound(SoundEffect.HitGroundBall, auSource);
         }
         else if (collision.gameObject.tag == Tags.Other.ToString())
         {
